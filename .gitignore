@@ -1,0 +1,8 @@
+dist/
+server/dist/
+shots/
+*.log
+webapp/node_modules/
+webapp/dist/
+*.tar.gz
+.DS_Store

@@ -1,0 +1,78 @@
+{
+    "id": "com.chebcheg.plugin-polls",
+    "name": "Опросы",
+    "description": "Голосования с кнопками и полосками результатов — как в Телеграме: один клик по варианту, результаты обновляются прямо в сообщении.",
+    "homepage_url": "https://github.com/chebcheg/mattermost-plugin-polls",
+    "support_url": "https://github.com/chebcheg/mattermost-plugin-polls/issues",
+    "icon_path": "assets/icon.svg",
+    "version": "2.1.3",
+    "min_server_version": "11.0.0",
+    "server": {
+        "executables": {
+            "linux-amd64": "server/dist/plugin-linux-amd64"
+        }
+    },
+    "webapp": {
+        "bundle_path": "webapp/dist/main.js"
+    },
+    "settings_schema": {
+        "header": "Настройки опросов",
+        "footer": "Плагин работает целиком на сервере: кнопки голосования и результаты — это сообщение плагина, поэтому опросы одинаково выглядят в браузере, десктопном клиенте и мобильном приложении.",
+        "settings": [
+            {
+                "key": "DefaultAnonymous",
+                "type": "bool",
+                "default": false,
+                "display_name": "Анонимные опросы по умолчанию",
+                "help_text": "В окне создания опроса галочка «Анонимное голосование» будет стоять сразу. Кто как голосовал, не показывается нигде."
+            },
+            {
+                "key": "HideResultsByDefault",
+                "type": "bool",
+                "default": false,
+                "display_name": "Скрывать результаты до голосования",
+                "help_text": "В окне создания опроса галочка «Скрывать результаты» будет стоять сразу: полоски видны только тем, кто уже проголосовал."
+            },
+            {
+                "key": "MaxOptions",
+                "type": "text",
+                "default": "12",
+                "display_name": "Сколько вариантов ответа разрешено",
+                "help_text": "Целое число от 2 до 20. В сообщении это столько же кнопок голосования."
+            },
+            {
+                "key": "AdminsCanEnd",
+                "type": "bool",
+                "default": false,
+                "display_name": "Администратор может завершать чужие опросы",
+                "help_text": "По умолчанию завершить опрос может только его автор. Включите, если администраторам нужно закрывать опросы, созданные другими сотрудниками."
+            },
+            {
+                "key": "AnyoneCanEnd",
+                "type": "bool",
+                "default": false,
+                "display_name": "Любой участник может завершить опрос",
+                "help_text": "По умолчанию завершить опрос может только автор (и администратор). Включите, если опросы ведут несколько человек."
+            },
+            {
+                "key": "VotersNameFormat",
+                "type": "dropdown",
+                "default": "last_first",
+                "display_name": "Как показывать имена проголосовавших",
+                "help_text": "Берётся из профиля сотрудника. Если поля не заполнены, показывается псевдоним, затем логин.",
+                "options": [
+                    {"display_name": "Фамилия Имя", "value": "last_first"},
+                    {"display_name": "Фамилия И.", "value": "last_initial"},
+                    {"display_name": "Логин", "value": "username"}
+                ]
+            },
+            {
+                "key": "ShowVotersButton",
+                "type": "bool",
+                "default": true,
+                "display_name": "Кнопка «Кто голосовал»",
+                "help_text": "Показывать в опросе кнопку, которая выводит список проголосовавших — видит только нажавший. В анонимных опросах кнопки нет всегда."
+            }
+        ]
+    }
+}
